@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ShowCard from "./ShowCard";
-import preload from "../data.json";
 
 class Search extends Component {
   // constructor(props) {
@@ -27,7 +26,7 @@ class Search extends Component {
     return (
       <div className="search">
         <header>
-          <h1>svideo</h1>
+          <h1>NEW TILE</h1>
           <input
             onChange={this.handleSearchTermChange}
             value={this.state.searchTerm}
@@ -36,7 +35,7 @@ class Search extends Component {
           />
         </header>
         <div>
-          {preload.shows
+          {this.props.shows
             .filter(
               show =>
                 `${show.title} ${show.description}`
