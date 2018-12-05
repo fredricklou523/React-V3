@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ShowCard from "./ShowCard";
+import Header from "./Header";
 
 class Search extends Component {
   // constructor(props) {
@@ -17,7 +18,12 @@ class Search extends Component {
     searchTerm: ""
   };
 
+  //componentWillMount -> right before react renders out to DOM, about to bemounted to DOM.  Useful if you have something that needs to happen server side and client side (server side rendering)
   //this is actually a REACT event for speed
+
+  //AJAX and gives scope to window/document -> if you integrate with another library put in here (D3) or event listeners on the window
+  componentDidMount() {}
+
   handleSearchTermChange = event => {
     this.setState({ searchTerm: event.target.value });
   };
@@ -25,15 +31,11 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>NEW TILE</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="Search"
-          />
-        </header>
+        <Header
+          showSearch
+          handleSearchTermChange={this.handleSearchTermChange}
+          searchTerm={this.state.searchTerm}
+        />
         <div>
           {this.props.shows
             .filter(
